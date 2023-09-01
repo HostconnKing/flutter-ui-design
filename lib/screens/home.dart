@@ -9,8 +9,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  var _deviceHeight = 0.0;
-  var _deviceWidth = 0.0;
+  var _deviceHeight;
+  var _deviceWidth;
 
   Widget _featuredGameWidget() {
     return SizedBox(
@@ -53,9 +53,54 @@ class _MainScreenState extends State<MainScreen> {
     );
   }
 
-  Widget _topLayerWidget(){
-  
+  Widget _topLayerWidget() {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: _deviceWidth * 0.05,
+        vertical: _deviceHeight * 0.005,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          _topBarWidget(),
+        ],
+      ),
+    );
+  }
 
+  Widget _topBarWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.13,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          const Icon(
+            Icons.menu,
+            color: Colors.white,
+            size: 30,
+          ),
+          Row(
+            children: <Widget>[
+              const Icon(
+                Icons.search,
+                color: Colors.white,
+                size: 30,
+              ),
+              SizedBox(width: _deviceWidth * 0.03),
+              const Icon(
+                Icons.notification_add,
+                color: Colors.white,
+                size: 30,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   @override
