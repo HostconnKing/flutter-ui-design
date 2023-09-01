@@ -72,6 +72,7 @@ class _MainScreenState extends State<MainScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _topBarWidget(),
+          SizedBox(height: _deviceHeight * 0.13),
           _featuredGameInfoWidget(),
         ],
       ),
@@ -126,17 +127,23 @@ class _MainScreenState extends State<MainScreen> {
             style:
                 TextStyle(color: Colors.white, fontSize: _deviceHeight * 0.040),
           ),
+          SizedBox(height: _deviceHeight * 0.01),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
             children: featuredGames.map((game) {
+              bool isActive = game.title == featuredGames[_selectedGame].title;
+
               double circleRadius = _deviceHeight * 0.004;
               return Container(
+                margin: EdgeInsets.only(
+                  right: _deviceWidth * 0.015,
+                ),
                 height: circleRadius * 2,
                 width: circleRadius * 2,
                 decoration: BoxDecoration(
-                    color: Colors.grey,
+                    color: isActive ? Colors.green : Colors.grey,
                     borderRadius: BorderRadius.circular(100)),
               );
             }).toList(),
