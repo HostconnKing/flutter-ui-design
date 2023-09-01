@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_sedign/data.dart';
+import 'package:flutter_ui_sedign/widgets/scrollable_games_widget.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -74,6 +75,12 @@ class _MainScreenState extends State<MainScreen> {
           _topBarWidget(),
           SizedBox(height: _deviceHeight * 0.13),
           _featuredGameInfoWidget(),
+          ScrollableGamesWidget(
+            _deviceHeight * 0.24,
+            _deviceWidth,
+            false,
+            games,
+          ),
         ],
       ),
     );
