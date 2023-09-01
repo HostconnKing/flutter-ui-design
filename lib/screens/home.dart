@@ -9,14 +9,21 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  var _deviceHeight;
-  var _deviceWidth;
+  var _deviceHeight = 0.0;
+  var _deviceWidth = 0.0;
+
+  var _selectedGame = 0;
 
   Widget _featuredGameWidget() {
     return SizedBox(
       height: _deviceHeight * 0.50,
       width: _deviceWidth,
       child: PageView(
+        onPageChanged: (index) {
+          setState(() {
+            _selectedGame = index;
+          });
+        },
         scrollDirection: Axis.horizontal,
         children: featuredGames.map((game) {
           return Container(
@@ -65,6 +72,7 @@ class _MainScreenState extends State<MainScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _topBarWidget(),
+          _featuredGameInfoWidget(),
         ],
       ),
     );
@@ -97,6 +105,41 @@ class _MainScreenState extends State<MainScreen> {
                 size: 30,
               ),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _featuredGameInfoWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.12,
+      width: _deviceWidth,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            featuredGames[_selectedGame].title,
+            maxLines: 2,
+            style:
+                TextStyle(color: Colors.white, fontSize: _deviceHeight * 0.040),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: featuredGames.map((game) {
+              double circleRadius = _deviceHeight * 0.004;
+              return Container(
+                height: circleRadius * 2,
+                width: circleRadius * 2,
+                decoration: BoxDecoration(
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.circular(100)),
+              );
+            }).toList(),
           ),
         ],
       ),
