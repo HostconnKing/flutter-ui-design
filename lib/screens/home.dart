@@ -73,18 +73,19 @@ class _MainScreenState extends State<MainScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _topBarWidget(),
-          SizedBox(height: _deviceHeight * 0.13),
+          SizedBox(height: _deviceHeight * 0.11),
           _featuredGameInfoWidget(),
           Padding(
             padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.01),
             child: ScrollableGamesWidget(
-              _deviceHeight * 0.24,
-              _deviceWidth,
-              false,
-              games,
-            ),
+                _deviceHeight * 0.24, _deviceWidth, true, games),
           ),
           _featuredGameBannerWidget(),
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.01),
+            child: ScrollableGamesWidget(
+                _deviceHeight * 0.22, _deviceWidth, false, games2),
+          )
         ],
       ),
     );
