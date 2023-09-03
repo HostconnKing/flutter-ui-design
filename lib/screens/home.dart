@@ -84,6 +84,7 @@ class _MainScreenState extends State<MainScreen> {
               games,
             ),
           ),
+          _featuredGameBannerWidget(),
         ],
       ),
     );
@@ -159,6 +160,20 @@ class _MainScreenState extends State<MainScreen> {
             }).toList(),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _featuredGameBannerWidget() {
+    return Container(
+      height: _deviceHeight * 0.13,
+      width: _deviceWidth,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(featuredGames[3].coverImage.url),
+        ),
       ),
     );
   }
