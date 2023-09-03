@@ -75,11 +75,14 @@ class _MainScreenState extends State<MainScreen> {
           _topBarWidget(),
           SizedBox(height: _deviceHeight * 0.13),
           _featuredGameInfoWidget(),
-          ScrollableGamesWidget(
-            _deviceHeight * 0.24,
-            _deviceWidth,
-            false,
-            games,
+          Padding(
+            padding: EdgeInsets.symmetric(vertical: _deviceHeight * 0.01),
+            child: ScrollableGamesWidget(
+              _deviceHeight * 0.24,
+              _deviceWidth,
+              false,
+              games,
+            ),
           ),
         ],
       ),
